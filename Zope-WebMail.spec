@@ -2,13 +2,13 @@
 Summary:	A mail client for Zope
 Summary(pl):	Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
-Version:	4.1
-Release:	5
+Version:	4.3.1
+Release:	1
 License:	GPL v2+
 Group:		Development/Tools
-Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_subname}_%{version}.tar.gz
-# Source0-md5:	3cc5047f150c66be431a6d1babc403c6
-URL:		http://zope.org/Members/sgiraud/WebMail
+Source0:	http://www.pentila.com/produits/WebMail/%{zope_subname}-%{version}.tgz
+# Source0-md5:	b35b48977be73eb8511296f3d3f7a244
+URL:		http://www.pentila.com/produits/WebMail/
 %pyrequires_eq	python-modules
 Requires:	Zope
 Requires(post,postun):	/usr/sbin/installzopeproduct
@@ -30,7 +30,7 @@ find . -type d -name CVS | xargs rm -rf
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-cp -af {dtml,style_sheet,www,*.py,*.dtml,refresh.txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -af {dtml,style_sheet,www,*.py,refresh.txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -57,5 +57,5 @@ fi
 %files
 %defattr(644,root,root,755)
 # contains authors
-%doc LICENSE.txt
+%doc LICENSE.txt CHANGES.txt
 %{_datadir}/%{name}
