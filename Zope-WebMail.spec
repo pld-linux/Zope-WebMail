@@ -3,7 +3,7 @@ Summary:	A mail client for Zope
 Summary(pl):	Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.3.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://www.pentila.com/produits/WebMail/%{zope_subname}-%{version}.tgz
