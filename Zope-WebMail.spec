@@ -1,10 +1,10 @@
 %include	/usr/lib/rpm/macros.python
 %define		zope_subname	WebMail
-Summary:	WebMail - a mail client for Zope
-Summary(pl):	WebMail - klient poczty elektronicznej dla Zope
+Summary:	A mail client for Zope
+Summary(pl):	Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_subname}_%{version}.tar.gz
@@ -12,10 +12,9 @@ Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_
 URL:		http://zope.org/Members/sgiraud/WebMail
 %pyrequires_eq	python-modules
 Requires:	Zope
+Requires(post,postun):  /usr/sbin/installzopeproduct
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define 	product_dir	/usr/lib/zope/Products
 
 %description
 WebMail is a mail client for Zope.
@@ -30,12 +29,12 @@ find . -type d -name CVS | xargs rm -rf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-cp -af {dtml,style_sheet,www,*.py} $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+cp -af {dtml,style_sheet,www,*.py} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-%py_comp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
-%py_ocomp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+%py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
+%py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
 
@@ -43,17 +42,21 @@ cp -af {dtml,style_sheet,www,*.py} $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 rm -rf $RPM_BUILD_ROOT
 
 %post
+/usr/sbin/installzopeproduct %{_datadir}/%{name} %{zope_subname}
 if [ -f /var/lock/subsys/zope ]; then
 	/etc/rc.d/init.d/zope restart >&2
 fi
 
 %postun
-if [ -f /var/lock/subsys/zope ]; then
-	/etc/rc.d/init.d/zope restart >&2
+if [ "$1" = "0" ]; then
+        /usr/sbin/installzopeproduct -d %{zope_subname}
+        if [ -f /var/lock/subsys/zope ]; then
+                /etc/rc.d/init.d/zope restart >&2
+        fi
 fi
 
 %files
 %defattr(644,root,root,755)
 # contains authors
 %doc LICENSE.txt
-%{product_dir}/%{zope_subname}
+%{_datadir}/%{name}
