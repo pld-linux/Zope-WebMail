@@ -4,7 +4,7 @@ Summary:	A mail client for Zope
 Summary(pl):	Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_subname}_%{version}.tar.gz
@@ -31,7 +31,7 @@ find . -type d -name CVS | xargs rm -rf
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-cp -af {dtml,style_sheet,www,*.py} $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -af {dtml,style_sheet,www,*.py,*.dtml,refresh.txt} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %py_comp $RPM_BUILD_ROOT%{_datadir}/%{name}
 %py_ocomp $RPM_BUILD_ROOT%{_datadir}/%{name}
