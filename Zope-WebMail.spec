@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.python
 %define		zope_subname	WebMail
 Summary:	A mail client for Zope
 Summary(pl):	Klient poczty elektronicznej dla Zope
