@@ -1,7 +1,7 @@
 %include	/usr/lib/rpm/macros.python
 %define		zope_subname	WebMail
-Summary:	Webmail - a mail client for Zope
-Summary(pl):	Webmail - klient poczty elektronicznej dla Zope
+Summary:	WebMail - a mail client for Zope
+Summary(pl):	WebMail - klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.1
 Release:	1
@@ -18,10 +18,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define 	product_dir	/usr/lib/zope/Products
 
 %description
-Webmail is a mail client for Zope.
+WebMail is a mail client for Zope.
 
 %description -l pl
-Webmail jest klientem poczty elektronicznej dla Zope.
+WebMail jest klientem poczty elektronicznej dla Zope.
 
 %prep
 %setup -q -c %{zope_subname}-%{version}
