@@ -3,7 +3,7 @@ Summary:	A mail client for Zope
 Summary(pl):	Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.1
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		Development/Tools
 Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_subname}_%{version}.tar.gz
