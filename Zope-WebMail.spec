@@ -5,8 +5,8 @@ Summary(pl):	WebMail - klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.1
 Release:	1
-License:	GNU
-Group:		Development/Tools      
+License:	GPL v2+
+Group:		Development/Tools
 Source0:	http://zope.org/Members/sgiraud/%{zope_subname}/%{zope_subname}/%{zope_subname}_%{version}.tar.gz
 # Source0-md5:	3cc5047f150c66be431a6d1babc403c6
 URL:		http://zope.org/Members/sgiraud/WebMail
@@ -24,21 +24,20 @@ WebMail is a mail client for Zope.
 WebMail jest klientem poczty elektronicznej dla Zope.
 
 %prep
-%setup -q -c %{zope_subname}-%{version}
+%setup -q -n %{zope_subname}
 
-%build
-rm -rf `find . -type d -name CVS`
+find . -type d -name CVS | xargs rm -rf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{product_dir}
-cp -af * $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+install -d $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
+
+cp -af {dtml,style_sheet,www,*.py} $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
 %py_comp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 %py_ocomp $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}
 
 # find $RPM_BUILD_ROOT -type f -name "*.py" -exec rm -rf {} \;;
-# rm -rf $RPM_BUILD_ROOT%{product_dir}/%{zope_subname}/*.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -55,5 +54,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
-# %%doc %{zope_subname}/*.txt
+# contains authors
+%doc LICENSE.txt
 %{product_dir}/%{zope_subname}
