@@ -9,7 +9,7 @@ Group:		Development/Tools
 Source0:	http://www.pentila.com/produits/WebMail/%{zope_subname}-%{version}.tgz
 # Source0-md5:	b35b48977be73eb8511296f3d3f7a244
 URL:		http://www.pentila.com/produits/WebMail/
-BuildRequires:  python
+BuildRequires:	python
 %pyrequires_eq	python-modules
 Requires:	Zope
 Requires(post,postun):	/usr/sbin/installzopeproduct
