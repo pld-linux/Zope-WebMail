@@ -1,6 +1,6 @@
 %define		zope_subname	WebMail
 Summary:	A mail client for Zope
-Summary(pl):	Klient poczty elektronicznej dla Zope
+Summary(pl.UTF-8):   Klient poczty elektronicznej dla Zope
 Name:		Zope-%{zope_subname}
 Version:	4.3.1
 Release:	2
@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 WebMail is a mail client for Zope.
 
-%description -l pl
+%description -l pl.UTF-8
 WebMail jest klientem poczty elektronicznej dla Zope.
 
 %prep
